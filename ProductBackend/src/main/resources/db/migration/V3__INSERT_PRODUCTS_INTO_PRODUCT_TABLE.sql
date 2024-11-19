@@ -1,0 +1,1 @@
+INSERT INTO product (product_name,monthly_fee) VALUES ("Speedpoint",400),("Speedee",200),("SpeedeeQR",100)
