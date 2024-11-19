@@ -1,0 +1,69 @@
+.LoginScreen {
+    height: 100vh;
+    margin-top:auto;
+    margin-bottom:auto;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.LoginBox {
+    background-color: #009999;
+    color: white;
+    padding: 20px;
+    width: 250px;
+    height: 350px;
+    box-shadow: 8px 8px 16px 0px #888888;
+    text-align: center;
+}
+
+.LoginBox>form{
+    height:250px;
+}
+
+.LoginBox > form > div {
+    margin-top:40px;
+    height: 100%;
+    align-items:center;
+}
+.LoginBox input {
+    width: 300px;
+    font-size: larger;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.LoginBox button {
+    margin-top: 10px; /* Optional, adds space between the button and input */
+}
+
+.Menu
+{
+    width:100%;
+    text-align:center;
+}
+
+.MenuOptions{
+    margin-left:auto;
+    margin-right:auto;
+    width:90%;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-evenly;
+}
+
+.MenuOptions>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#009999;
+    box-shadow: 8px 8px 16px 0px #888888;
+    color:white;
+    height:200px;
+    width:200px;
+    transition: transform 0.3s ease;
+}
+
+.MenuOptions>div:hover {
+    transform: scale(1.1); /* Increase the size by 10% */
+}

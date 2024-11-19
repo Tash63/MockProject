@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Shop</title>
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="LoginScreen">
+    <h1 style="margin-bottom:100px">Product Shop</h1>
+    <div class="LoginBox">
+        <h2>Log In</h2>
+        <form action="/menu" method="get">
+            <div class="LoginForm">
+                <div>
+                    <h4 style="margin-bottom:15px;font-weight:normal;text-align:left">Enter Customer Id:</h4>
+                    <input name="customerId" type="number" fn style="width: 200px;font-size: larger">
+                    <div style="display: flex;flex-direction:row;justify-content:space-around;width: 100%;margin-top:10px">
+                        <button type="submit"
+                                style="width: 100px;border-radius:10%;height:30px;background-color:#FA9D1E;color:white">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
