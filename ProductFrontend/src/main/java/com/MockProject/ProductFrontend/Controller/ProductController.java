@@ -6,6 +6,7 @@ import com.MockProject.ProductFrontend.Model.Services.ProductServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -23,5 +24,11 @@ public class ProductController {
         List<Product> products = productServices.getAllProducts();
         model.addAttribute("products", products);
         return "apply";
+    }
+
+    @GetMapping("/confirm")
+    public String confirmApplication(@RequestParam Long pid, Model model) {
+        model.addAttribute("pid", pid);
+        return "confirmation";
     }
 }

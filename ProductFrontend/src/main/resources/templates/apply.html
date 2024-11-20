@@ -25,7 +25,7 @@
             <p>Monthly Fee : R<span th:text="${product.monthlyFee}"></span></p>
             <div class="ApplySection">
                 <div></div>
-                <form action="/menu" method="get">
+                <form action="/confirm" method="get">
                     <button name="pid" th:attr="value=${product.id}">Apply</button>
                 </form>
             </div>

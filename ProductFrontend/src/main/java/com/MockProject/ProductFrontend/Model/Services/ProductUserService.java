@@ -14,20 +14,24 @@ import java.util.List;
 @Service
 @Scope("session")
 public class ProductUserService {
-    private Long Id;
+    private Integer Id;
     final private ProductUserClient productUserClient;
 
     public ProductUserService(ProductUserClient productUserClient) {
         this.productUserClient = productUserClient;
     }
 
-    public void setId(Long Id) {
+    public void setId(Integer Id) {
         this.Id = Id;
     }
 
-    public ProductUser SaveProductToUser(ProductUserCreate productUserCreate) {
+    public Integer getId() {
+        return Id;
+    }
+
+    public ProductUser SaveProductToUser(Long pid) {
         //save the selected product to the user
-        return productUserClient.saveProductToUser();
+        return productUserClient.saveProductToUser(new ProductUserCreate().pid(pid).uid(Id));
     }
 
     public List<Product> getProductsByUser() {

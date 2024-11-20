@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Product Shop</title>
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
 </head>
 <body>
-
+<div class="Confirmation">
+    <h1>Do you want to apply for this product</h1>
+    <div class="ConfirmationButtons">
+        <button onclick=window.location.href="/menu">
+            Cancel
+        </button>
+        <form action="/addproduct" method="post">
+            <button name="pid" th:attr="value=${pid}">
+                Confirm
+            </button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

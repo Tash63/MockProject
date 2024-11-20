@@ -141,9 +141,41 @@
     align-items:center;
 }
 
-.ApplySection> button
+.ApplySection>form> button
 {
     width:75px;
+}
+
+.Confirmation{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    border-style:solid;
+    border-width:1px;
+    padding:10px;
+    text-align:center;
+    box-shadow: 8px 8px 16px 0px #888888;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:375px;
+    height:170px;
+}
+
+.ConfirmationButtons
+{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.ConfirmationButtons>button
+{
+    width:85px;
+    height:25px;
+    font-size:larger;
 }
 
 
