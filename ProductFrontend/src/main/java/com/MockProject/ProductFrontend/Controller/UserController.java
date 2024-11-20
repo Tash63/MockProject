@@ -1,18 +1,24 @@
 package com.MockProject.ProductFrontend.Controller;
 
 import com.MockProject.ProductFrontend.Model.Clients.ProductUserClient;
-import org.apache.catalina.User;
-import org.springframework.boot.autoconfigure.graphql.ConditionalOnGraphQlSchema;
+import com.MockProject.ProductFrontend.Model.Product;
+import com.MockProject.ProductFrontend.Model.Services.ProductUserService;
+import org.springframework.boot.Banner;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+
+import java.util.List;
 
 @Controller
+@Scope("session")
 public class UserController {
-    private final ProductUserClient productUserClient;
+    private final ProductUserService productUserService;
 
-    public UserController(ProductUserClient productUserClient) {
-        this.productUserClient = productUserClient;
+    public UserController(ProductUserService productUserService) {
+        this.productUserService = productUserService;
     }
 
     @GetMapping("/")
@@ -22,12 +28,14 @@ public class UserController {
 
     @GetMapping("/menu")
     public String menu(@RequestParam Long customerId) {
-        System.out.println(customerId);
+        productUserService.setId(customerId);
         return "menu";
     }
 
     @GetMapping("/viewproducts")
-    public String viewproducts() {
+    public String viewproducts(Model model) {
+        List<Product> products = productUserService.getProductsByUser();
+        model.addAttribute("products", products);
         return "view_products";
     }
 }

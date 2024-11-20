@@ -12,7 +12,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.List;
 
 @Service
-@Scope(value = WebApplicationContext.SCOPE_SESSION)
+@Scope("session")
 public class ProductUserService {
     private Long Id;
     final private ProductUserClient productUserClient;
@@ -30,7 +30,7 @@ public class ProductUserService {
         return productUserClient.saveProductToUser();
     }
 
-    public List<Product> getProductsByUser(Long Id) {
+    public List<Product> getProductsByUser() {
         //get all the products that a user has applied for
         return productUserClient.getProductsByUser(Id);
     }
