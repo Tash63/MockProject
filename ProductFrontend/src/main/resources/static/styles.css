@@ -116,8 +116,34 @@
     margin:10px 0px;
 }
 
-
-
 .Product>h2{
     font-weight:normal;
 }
+
+.ApplyHeader{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.ApplySection
+{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.Products{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.ApplySection> button
+{
+    width:75px;
+}
+
+

@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Product Shop</title>
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
 </head>
 <body>
-apply
+<div class="Apply">
+    <div class="ApplyHeader">
+        <div class="backimg">
+            <button onclick=history.back()>
+                <img th:src="@{/images/back.png}">
+            </button>
+        </div>
+        <div>
+            <h1>Apply</h1>
+        </div>
+        <div>
+        </div>
+    </div>
+    <div class="Products">
+        <div class="Product" th:each="product: ${products}">
+            <h2><span th:text="${product.productName}"></span></h2>
+            <p>Monthly Fee : R<span th:text="${product.monthlyFee}"></span></p>
+            <div class="ApplySection">
+                <div></div>
+                <form action="/menu" method="get">
+                    <button name="pid" th:attr="value=${product.id}">Apply</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,9 +1,13 @@
 package com.MockProject.ProductFrontend.Controller;
 
 import com.MockProject.ProductFrontend.Model.Clients.ProductClient;
+import com.MockProject.ProductFrontend.Model.Product;
 import com.MockProject.ProductFrontend.Model.Services.ProductServices;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @Controller
 public class ProductController {
@@ -14,7 +18,10 @@ public class ProductController {
     }
 
     @GetMapping("/apply")
-    public String apply() {
+    public String apply(Model model) {
+        //get all products
+        List<Product> products = productServices.getAllProducts();
+        model.addAttribute("products", products);
         return "apply";
     }
 }
