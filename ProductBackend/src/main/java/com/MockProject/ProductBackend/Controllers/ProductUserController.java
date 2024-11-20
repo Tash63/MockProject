@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "${app.cors}")
 @RestController
-@RequestMapping("${app.productuser.requestmapping}")
+@RequestMapping("/api/user")
 public class ProductUserController {
     private final ProductUserServices productUserServices;
 
@@ -18,12 +18,12 @@ public class ProductUserController {
         this.productUserServices = productUserServices;
     }
 
-    @PostMapping("${app.productuser.endpoints.saveproducttouser}")
+    @PostMapping("/save")
     public ProductUser saveProductToUser(@RequestBody ProductUserCreate productUserCreate) {
         return productUserServices.SaveProductToUser(productUserCreate);
     }
 
-    @GetMapping("${app.productuser.endpoints.getproductforusers}")
+    @GetMapping("/{Id}")
     public List<Product> getProductsForUsers(@PathVariable Long Id) {
         return productUserServices.getProductsByCustomer(Id);
     }

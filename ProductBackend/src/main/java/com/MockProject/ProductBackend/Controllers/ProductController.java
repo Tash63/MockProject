@@ -15,7 +15,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "${app.cors}")
 @RestController
-@RequestMapping("${app.product.requestmapping}")
+@RequestMapping("/api/product")
 public class ProductController {
     private final ProductServices productServices;
 
@@ -23,7 +23,7 @@ public class ProductController {
         this.productServices = productServices;
     }
 
-    @GetMapping("${app.product.endpoints.getallproducts}")
+    @GetMapping("/")
     public List<Product> getAllProducts() {
         return productServices.getAllProducts();
     }
