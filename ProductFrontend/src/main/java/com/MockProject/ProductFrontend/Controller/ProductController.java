@@ -5,11 +5,12 @@ import com.MockProject.ProductFrontend.Model.Product;
 import com.MockProject.ProductFrontend.Model.Services.ProductServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-
+@CrossOrigin(origins = "${app.cors}")
 @Controller
 public class ProductController {
     private final ProductServices productServices;

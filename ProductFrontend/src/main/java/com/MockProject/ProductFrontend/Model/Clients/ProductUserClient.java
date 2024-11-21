@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(value = "ProductUser", url = "http://localhost:8081/api/user")
+@FeignClient(value = "ProductUser", url = "${app.ProductUser.url}")
 public interface ProductUserClient {
-    @RequestMapping(method = RequestMethod.POST, value = "/save")
+    @RequestMapping(method = RequestMethod.POST, value = "${app.ProductUser.endpoints.save}")
     public ProductUser saveProductToUser(@RequestBody ProductUserCreate productUserCreate);
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{Id}")
+    @RequestMapping(method = RequestMethod.GET, value = "${app.ProductUser.endpoints.getUserProducts}")
     public List<Product> getProductsByUser(@PathVariable("Id") Integer Id);
 }

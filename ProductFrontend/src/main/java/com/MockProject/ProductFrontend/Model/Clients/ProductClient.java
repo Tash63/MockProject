@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(value = "Product", url = "http://localhost:8081/api/product")
+@FeignClient(value = "Product", url = "${app.product.url}")
 public interface ProductClient {
-    @RequestMapping(method = RequestMethod.GET, value = "/")
+    @RequestMapping(method = RequestMethod.GET, value = "${app.product.endpoints.getall}")
     List<Product> getAllProducts();
 }
