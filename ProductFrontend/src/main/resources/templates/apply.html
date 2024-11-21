@@ -54,20 +54,26 @@
         </div>
     </div>
 </div>
-<dialog id="ApplyDialogue" style="width:fit-content">
-    <h2>Do you want to apply for this product</h2>
-    <div class="ConfirmationButtons">
-        <button onclick="onCancelClick()">
-            Cancel
-        </button>
-        <button onclick="onConfirmClick()">
-            Confirm
-        </button>
+<dialog id="ApplyDialogue">
+    <div class="dailog">
+        <h2>Do you want to apply for this product</h2>
+        <div class="ConfirmationButtons">
+            <button onclick="onCancelClick()">
+                Cancel
+            </button>
+            <button onclick="onConfirmClick()">
+                Confirm
+            </button>
+        </div>
     </div>
 </dialog>
 <dialog id="SucessDialogue">
-    <h1>Product has been registered to user account</h1>
-    <button onclick="onCancelClick()">Ok</button>
+    <div class="dailog">
+        <h2>Product has been registered to user account</h2>
+        <div class="ConfirmationButtons">
+            <button onclick="onCancelClick()">Ok</button>
+        </div>
+    </div>
 </dialog>
 </body>
 </html>
