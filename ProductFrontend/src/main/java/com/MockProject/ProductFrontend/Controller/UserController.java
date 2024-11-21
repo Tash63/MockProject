@@ -5,6 +5,7 @@ import com.MockProject.ProductFrontend.Model.Product;
 import com.MockProject.ProductFrontend.Model.ProductUser;
 import com.MockProject.ProductFrontend.Model.ProductUserCreate;
 import com.MockProject.ProductFrontend.Model.Services.ProductUserService;
+import org.bouncycastle.math.raw.Mod;
 import org.springframework.boot.Banner;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -31,15 +32,24 @@ public class UserController {
     }
 
     @GetMapping("/menu")
-    public String menu(@RequestParam(required = false) Integer customerId) {
+    public String menu(@RequestParam(required = false) Integer customerId, Model model) {
         if (customerId != null) {
             productUserService.setId(customerId);
+        } else {
+            if (productUserService.getId() == null) {
+                model.addAttribute("ErrorMessage", "User Not Logged In");
+                return "error";
+            }
         }
         return "menu";
     }
 
     @GetMapping("/viewproducts")
     public String viewproducts(Model model) {
+        if (productUserService.getId() == null) {
+            model.addAttribute("ErrorMessage", "User Not Logged In");
+            return "error";
+        }
         List<Product> products = productUserService.getProductsByUser();
         model.addAttribute("products", products);
         return "view_products";

@@ -191,5 +191,11 @@ dialog{
     color:white;
 }
 
+.Error>h1{
+    color:red;
+}
 
+.ErrorMessage{
+    font-weight:normal;
+}
 
