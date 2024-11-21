@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -45,9 +46,10 @@ public class UserController {
     }
 
     @PostMapping("/addproduct")
-    public String saveproduct(@RequestParam Long pid) {
+    //indicate that this endpoint is only retuing data and not a view
+    @ResponseBody
+    public void saveproduct(@RequestParam Long pid) {
         //create a Product user create request model
         productUserService.SaveProductToUser(pid);
-        return "sucess";
     }
 }

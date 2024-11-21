@@ -4,6 +4,30 @@
     <meta charset="UTF-8">
     <title>Product Shop</title>
     <link th:href="@{/styles.css}" rel="stylesheet"/>
+    <script>
+
+        let pid;
+
+        function onApplyClick(productId)
+        {
+            document.getElementById("ApplyDialogue").showModal();
+            pid=productId;
+        }
+
+        async function onConfirmClick()
+        {
+            document.getElementById("ApplyDialogue").close();
+            //make request to save the product agaisnt the user
+            const response =await fetch('/addproduct?pid='+pid,{method:"POST"});
+            document.getElementById("SucessDialogue").showModal();
+
+        }
+
+        function onCancelClick()
+        {
+            window.location.href="/menu"
+        }
+    </script>
 </head>
 <body>
 <div class="Apply">
@@ -24,13 +48,26 @@
             <h2><span th:text="${product.productName}"></span></h2>
             <p>Monthly Fee : R<span th:text="${product.monthlyFee}"></span></p>
             <div class="ApplySection">
-                <div></div>
-                <form action="/confirm" method="get">
-                    <button name="pid" th:attr="value=${product.id}">Apply</button>
-                </form>
+                <button th:data-name="${product.id}" th:onclick="onApplyClick(this.getAttribute('data-name'))">Apply
+                </button>
             </div>
         </div>
     </div>
 </div>
+<dialog id="ApplyDialogue" style="width:fit-content">
+    <h2>Do you want to apply for this product</h2>
+    <div class="ConfirmationButtons">
+        <button onclick="onCancelClick()">
+            Cancel
+        </button>
+        <button onclick="onConfirmClick()">
+            Confirm
+        </button>
+    </div>
+</dialog>
+<dialog id="SucessDialogue">
+    <h1>Product has been registered to user account</h1>
+    <button onclick="onCancelClick()">Ok</button>
+</dialog>
 </body>
 </html>
