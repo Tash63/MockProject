@@ -34,9 +34,9 @@ class ProductServicesTest {
     @Test
     void getAllProducts() {
         List<Product> Products = new ArrayList<>();
-        Products.add(new Product(Long.getLong("1"), "Speedpoint", Double.valueOf(400)));
-        Products.add(new Product(Long.getLong("2"), "Speedee", Double.valueOf(200)));
-        Products.add(new Product(Long.getLong("3"), "SpeedeeQR", Double.valueOf(100)));
+        Products.add(new Product(Long.valueOf(1), "Speedpoint", Double.valueOf(400)));
+        Products.add(new Product(Long.valueOf(2), "Speedee", Double.valueOf(200)));
+        Products.add(new Product(Long.valueOf(3), "SpeedeeQR", Double.valueOf(100)));
         when(productRepository.findAll()).thenReturn(Products);
         assertIterableEquals(Products, productServices.getAllProducts());
     }
