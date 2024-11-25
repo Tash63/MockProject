@@ -1,8 +1,15 @@
 package com.MockProject.ProductBackend.Data.Model;
+
 import jakarta.persistence.*;
+import lombok.*;
+
 @Entity
 @Table(name = "product")
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,41 +19,4 @@ public class Product {
     @Column(name = "monthly_fee", nullable = false)
     private Double MonthlyFee;
 
-    public Product() {
-    }
-
-    public Product(String ProductName, Double MonthlyFee) {
-        this.ProductName = ProductName;
-        this.MonthlyFee = MonthlyFee;
-    }
-
-    public Product(Long Id, String ProductName, Double MonthlyFee) {
-        this.Id = Id;
-        this.ProductName = ProductName;
-        this.MonthlyFee = MonthlyFee;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public void setProductName(String productName) {
-        ProductName = productName;
-    }
-
-    public void setMonthlyFee(Double monthlyFee) {
-        MonthlyFee = monthlyFee;
-    }
-
-    public Long getId() {
-        return Id;
-    }
-
-    public String getProductName() {
-        return ProductName;
-    }
-
-    public Double getMonthlyFee() {
-        return MonthlyFee;
-    }
 }

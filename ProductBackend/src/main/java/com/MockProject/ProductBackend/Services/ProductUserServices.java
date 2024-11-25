@@ -25,10 +25,11 @@ public class ProductUserServices {
     public ProductUser SaveProductToUser(ProductUserCreate productUserCreate) {
         //validate the selected product id
         Product product = productRepository.findById(productUserCreate.getPID()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Product Not Found"));
-        return productUserRepository.save(new ProductUser(productUserCreate.getUID(), product));
+        ProductUser productUser = new ProductUser(0l,productUserCreate.getUID(),product);
+        return productUserRepository.save(productUser);
     }
 
     public List<Product> getProductsByCustomer(Long UID) {
-        return productUserRepository.findProductByUserId(UID).stream().map(ProductUser::getSelectedproduct).toList();
+        return productUserRepository.findProductByUserId(UID).stream().map(ProductUser::getProduct).toList();
     }
 }
