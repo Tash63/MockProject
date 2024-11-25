@@ -4,6 +4,7 @@ import com.MockProject.ProductBackend.Data.Model.Product;
 import com.MockProject.ProductBackend.Data.Model.ProductUser;
 import com.MockProject.ProductBackend.Data.Model.ProductUserCreate;
 import com.MockProject.ProductBackend.Services.ProductUserServices;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class ProductUserController {
     public ProductUserController(ProductUserServices productUserServices) {
         this.productUserServices = productUserServices;
     }
-
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/save")
     public ProductUser saveProductToUser(@RequestBody ProductUserCreate productUserCreate) {
         return productUserServices.SaveProductToUser(productUserCreate);

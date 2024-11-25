@@ -42,7 +42,9 @@ class ProductUserServicesTest {
         ProductUser productUser = new ProductUser(Long.valueOf(1), 1, product);
         when(productUserRepository.save
                 (any(ProductUser.class))).thenReturn(productUser);
-        assertNotNull(productUserServices.SaveProductToUser(new ProductUserCreate(1, Long.valueOf(1))));
+        ProductUser productUserresult = productUserServices.SaveProductToUser(new ProductUserCreate(1, Long.valueOf(1)));
+        assertNotNull(productUserresult);
+        assertTrue(productUserresult.equals(productUser));
     }
 
     @Test
@@ -60,14 +62,18 @@ class ProductUserServicesTest {
         UserProducts.add(new ProductUser(Long.valueOf(3), 1, new Product(Long.valueOf(1), "Speedpoint", Double.valueOf(400))));
         UserProducts.add(new ProductUser(Long.valueOf(4), 1, new Product(Long.valueOf(2), "Speedee", Double.valueOf(200))));
         UserProducts.add(new ProductUser(Long.valueOf(5), 1, new Product(Long.valueOf(1), "Speedpoint", Double.valueOf(400))));
-        when(productUserRepository.findProductByUserId(Long.getLong("1"))).thenReturn(UserProducts);
+        when(productUserRepository.findProductByUserId(Long.valueOf(1))).thenReturn(UserProducts);
         List<Product> UserSelectedProducts = new ArrayList<>();
         UserSelectedProducts.add(new Product(Long.valueOf(1), "Speedpoint", Double.valueOf(400)));
         UserSelectedProducts.add(new Product(Long.valueOf(2), "Speedee", Double.valueOf(200)));
         UserSelectedProducts.add(new Product(Long.valueOf(1), "Speedpoint", Double.valueOf(400)));
         UserSelectedProducts.add(new Product(Long.valueOf(2), "Speedee", Double.valueOf(200)));
         UserSelectedProducts.add(new Product(Long.valueOf(1), "Speedpoint", Double.valueOf(400)));
-        assertEquals(UserSelectedProducts.size(), productUserServices.getProductsByCustomer(Long.getLong("1")).size());
+        List<Product> UserSelectedProductsResult = productUserServices.getProductsByCustomer(Long.valueOf(1));
+        assertEquals(UserSelectedProductsResult.size(), UserSelectedProducts.size());
+        for (int i = 0; i < UserSelectedProductsResult.size(); i++) {
+            assertTrue(UserSelectedProductsResult.get(i).equals(UserSelectedProducts.get(i)));
+        }
 
     }
 }
