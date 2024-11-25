@@ -14,11 +14,14 @@
         <h1>View Selected Products</h1>
         <div></div>
     </div>
-    <div class="UserSelectedProducts">
+    <div th:if="${products.size > 0}" class="UserSelectedProducts">
         <div class="Product" th:each="product: ${products}">
             <h2><span th:text="${product.productName}"></span></h2>
             <p>Monthly Fee : R<span th:text="${product.monthlyFee}"></span></p>
         </div>
+    </div>
+    <div th:unless="${products.size > 0}" class="UserSelectedProducts">
+        <h2>No Products For This User</h2>
     </div>
 </div>
 </body>
