@@ -5,6 +5,8 @@ import com.MockProject.ProductFrontend.Model.Clients.ProductUserClient;
 import com.MockProject.ProductFrontend.Model.Product;
 import com.MockProject.ProductFrontend.Model.ProductUser;
 import com.MockProject.ProductFrontend.Model.ProductUserCreate;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
@@ -13,20 +15,14 @@ import java.util.List;
 
 @Service
 @Scope("session")
+@Getter
+@Setter
 public class ProductUserService {
     private Integer Id;
     final private ProductUserClient productUserClient;
 
     public ProductUserService(ProductUserClient productUserClient) {
         this.productUserClient = productUserClient;
-    }
-
-    public void setId(Integer Id) {
-        this.Id = Id;
-    }
-
-    public Integer getId() {
-        return Id;
     }
 
     public ProductUser SaveProductToUser(Long pid) {

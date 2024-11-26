@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+
 @CrossOrigin(origins = "${app.cors}")
 @Controller
 public class ProductController {
@@ -27,9 +28,4 @@ public class ProductController {
         return "apply";
     }
 
-    @GetMapping("/confirm")
-    public String confirmApplication(@RequestParam Long pid, Model model) {
-        model.addAttribute("pid", pid);
-        return "confirmation";
-    }
 }

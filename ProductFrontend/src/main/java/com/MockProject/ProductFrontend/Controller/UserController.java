@@ -8,16 +8,19 @@ import com.MockProject.ProductFrontend.Model.Services.ProductUserService;
 import org.bouncycastle.math.raw.Mod;
 import org.springframework.boot.Banner;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
 @CrossOrigin(origins = "${app.cors}")
 @Controller
 @Scope("session")
-public class UserController {
+public class
+UserController {
     private final ProductUserService productUserService;
 
     public UserController(ProductUserService productUserService) {
@@ -56,8 +59,8 @@ public class UserController {
     @PostMapping("/addproduct")
     //indicate that this endpoint is only retuing data and not a view
     @ResponseBody
-    public void saveproduct(@RequestParam Long pid) {
+    public ProductUser saveproduct(@RequestParam Long pid) {
         //create a Product user create request model
-        productUserService.SaveProductToUser(pid);
+        return productUserService.SaveProductToUser(pid);
     }
 }
